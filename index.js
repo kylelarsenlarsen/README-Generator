@@ -47,23 +47,16 @@ const readmeGenerator = () => {
                 name: 'contribution',
                 message: 'How to Contribute',
             },
-            {
-                type: 'input',
-                name: 'tests',
-                message: 'Tests',
-            },
         ])
         .then((answers) => {
-            const readmeContent = `
-# ${answers.title}
+            const readmeContent =
+                `# ${answers.title}
 
 ## Description
 
 ${answers.description}
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -92,13 +85,9 @@ ${answers.features}
 
 ## How to Contribute
 
-${answers.contribution}
+${answers.contribution}`
 
-## Tests
-
-${answers.tests}
-            `
-            fs.writeFile('dist/README.md', readmeContent, (err) =>
+            fs.writeFile('README.md', readmeContent, (err) =>
                 err ? console.log(err) : console.log('Successfully created README.md!')
             );
         })
